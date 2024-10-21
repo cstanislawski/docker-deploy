@@ -10,7 +10,7 @@ on:
 
 jobs:
   go-lint:
-    name: lint
+    name: go-lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
         with:
           go-version: 1.23.2
   go-build:
-    name: build
+    name: go-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
           file: ./app/Dockerfile
           push: false
   docker-build:
-    name: docker
+    name: docker-build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
