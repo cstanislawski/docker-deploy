@@ -9,8 +9,8 @@ on:
     branches: [main]
 
 jobs:
-  go-lint:
-    name: go-lint
+  lint:
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,8 +18,8 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 1.23.2
-  go-build:
-    name: go-build
+  build:
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,14 +28,3 @@ jobs:
           context: .
           file: ./app/Dockerfile
           push: false
-  docker-build:
-    name: docker-build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ./app/Dockerfile
-          push: false
-          tags: ${{ secrets.DOCKER_REGISTRY }}/app:${{ github.sha }}
