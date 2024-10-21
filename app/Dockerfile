@@ -7,7 +7,7 @@ COPY *.go ./
 
 RUN go build -o /app
 
-FROM base
+FROM scratch
 
 WORKDIR /
 
